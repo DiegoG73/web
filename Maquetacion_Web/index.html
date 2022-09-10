@@ -5,17 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maquetación Web</title>
+    <link rel="stylesheet" href="./CSS/style.css" type="text/css">
 </head>
 
 <body>
     <header id="header">
         <div class="center">
         <!-- LOGO -->
-        <div id="logo">
-            <img src="" alt="logotipo" class="app-logo">
-        </div>
+            <div id="logo">
+                <img src="./Assets/React-icon.png" alt="Logotipo" class="app-logo">
+                <span id="brand">
+                    <strong>Curso</strong> React
+                </span>
+            </div>
+
         <!-- Menú -->
+            <nav id="menu">
+                <ul>
+                    <li>
+                        <a href="">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="">Blog</a>
+                    </li>
+                    <li>
+                        <a href="">Formulario</a>
+                    </li>
+                    <li>
+                        <a href="">Página 1</a>
+                    </li>
+                    <li>
+                        <a href="">Página 2</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Limpiar floats -->
+            <div class="clearfix"></div>
+
         </div>
     </header>
+    <div id="slider" class="slider-big">
+        <h1>Bienvenido al curso de FrameWorks para JavaScript</h1>
+        <a href="" class="btn-white">Ir al blog</a>
+    </div>
 </body>
 </html>
