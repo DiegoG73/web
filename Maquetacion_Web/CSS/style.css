@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
     margin: 0%;
-    padding: 0%;
+    /* padding: 0%; */
 }
 html{
     font-size: 62.5%;
@@ -42,7 +42,7 @@ body{
     display: block;
     float: left;
     height: 60px;
-    margin-top: -9px;
+    margin-top: -20px;
     margin-right: 10px;
     animation: girar infinite 30s linear;
 }
@@ -58,7 +58,7 @@ body{
 
 #brand{
     display: block;
-    margin: 0px;
+    margin: -7px;
     float: left;
 }
 #menu{
@@ -124,4 +124,63 @@ body{
 .btn-white:hover{
     background-color: #00d4ff;
     color: white;
+}
+.slider-small{
+    height: 150px;
+}
+.slider-small h1{
+    margin-top: 0.2px;
+    padding: 0px;
+    font-size: 4rem;
+    padding-top: 55px;
+    text-align: center;
+}
+#content{
+    width: 70%;
+    float: left;
+    min-height: 450px;
+    margin-right: 20px;
+}
+#sidebar{
+    width: 25%;
+    float: left;
+}
+.sidebar-item{
+    background: #f7f7f7;
+    padding: 20px;
+    margin-top: 30px;
+}
+.sidebar-item h3{
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    margin: 0px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #ccc;
+}
+#search p{
+    margin: 10px;
+    font-size: 1.5rem;
+}
+.sidebar-item .btn{
+    margin: 0px auto;
+    margin-top: 10px;
+}
+.btn{
+    display: block;
+    background: black;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    text-decoration: none;
+    max-width: 170px;
+    transition: 300ms all;
+}
+.btn-success{
+    background: rgb(45, 223, 59);
+}
+.btn-success:hover{
+    background: rgb(1, 238, 247);
 }
