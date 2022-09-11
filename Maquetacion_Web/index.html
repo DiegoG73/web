@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maquetación Web</title>
     <link rel="stylesheet" href="./CSS/style.css" type="text/css">
+
+    <script type="text/javascript">
+        window.addEventListener("load", function(){
+            var template = document.getElementById("article-template");
+            var articles = document.getElementById("articles");
+
+            for(var i = 0; i <= 5; i++){
+                var clonado = template.cloneNode(true);
+                var h2 = clonado.getElementsByTagName("h2")[0];
+                console.log(h2);
+                h2.innerHTML = h2.textContent + ' ' + i;
+
+                articles.appendChild(clonado);
+            }
+        })
+    </script>
+
 </head>
 
 <body>
@@ -53,6 +70,22 @@
     <div class="center">
         <section id="content">
             <h2>Últimos artículos</h2>
+
+            <!-- Listado de artículos -->
+            <div id="articles">
+                <article class="article-item" id="article-template">
+                    <div class="image-wrap">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/640px-Star_Wars_Logo.svg.png" alt="Star_Wars_Logo">
+                    </div>
+                    <h2>Artículo de prueba</h2>
+                    <span class="date">
+                        Hace 5 minutos
+                    </span>
+                    <a href="">Leer más</a>
+                </article>
+
+                <!-- Añadir artículos vía JS -->
+            </div>
         </section>
 
         <aside id="sidebar">
