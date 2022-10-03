@@ -1,6 +1,7 @@
 'use strict'
 
 var validator = require('validator')
+const article = require('../models/article')
 const { find } = require('../models/article')
 var Article = require('../models/article')
 
@@ -103,6 +104,115 @@ var controller = {
                 status: 'success',
                 articles
             })
+        })
+    },
+
+    getArticle: (req, res) => {
+        
+        //Recoger el ID de la url
+        var articleId =  req.params.id
+
+        //Comprobar que existe
+        if(!articleId || articleId == null){
+            return res.status(404).send({
+                status: 'error',
+                message: 'No existe el artículo'
+            })
+        }
+
+        //Buscar el artículo
+        Article.findById(articleId, (err, article) => {
+
+            if(err || !article){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No existe el artículo'
+                })
+            }
+
+            //Devolverlo en JSON
+        
+            return res.status(404).send({
+            status: 'success',
+            article
+            })
+
+        })
+    },
+
+    update: (req, res) => {
+        //Recoger el ID del artículo por la URL
+        var articleId = req.params.id
+
+        //Recoger los datos que llegan por put
+        var params = req.body
+
+        //Validar datos
+        try{
+            var validate_title = !validator.isEmpty(params.title)
+            var validate_content = !validator.isEmpty(params.content)
+        }catch(err){
+            return res.status(200).send({
+                status: 'error',
+                message: 'Faltan datos por enviar'
+            })
+        }
+
+        if(validate_title && validate_content){
+            //Find and update
+            Article.findOneAndUpdate({_id: articleId}, params, {new:true}, (err, articleUpdated) => {
+                if(err){
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al actualizar'
+                    })
+                }
+                if(!articleUpdated){
+                    return res.status(404).send({
+                        status: 'error',
+                        message: 'No existe el artículo'
+                    })
+                }
+
+                return res.status(200).send({
+                    status: 'success',
+                    article: articleUpdated
+                })
+            })
+        }else{
+            return res.status(200).send({
+                status: 'error',
+                message: 'La validación no es correcta'
+            })
+        }
+    },
+
+    delete: (req, res) => {
+        //Recoger el ID de la URL
+        var articleId = req.params.id
+        //Find and delete
+        Article.findOneAndDelete({_id: articleId}, (err, articleRemoved) => {
+            if(err){
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al volar'
+                })
+            }
+            if(!articleRemoved){
+                return res.status(200).send({
+                    status: 'error',
+                    message: 'No se ha borrado el artículo, posiblemente no exista'
+                })
+            }
+
+            return res.status(200).send({
+                status: 'success',
+                article: articleRemoved
+            })
+        })
+        return res.status(200).send({
+            status: 'error',
+            message: 'El artículo se ha eliminado'
         })
     }
 
